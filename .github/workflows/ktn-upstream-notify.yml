@@ -1,0 +1,15 @@
+name: ktn upstream notify
+on:
+  schedule:
+    - cron: '0 13 * * 1' # weekly Monday check
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  notify:
+    uses: Kautiontape/fork-sync/.github/workflows/fork-sync.yml@main
+    with:
+      upstream: jeffvli/feishin
+      mode: notify
+      tag_pattern: '^v[0-9]+\.[0-9]+\.[0-9]+$'
+    secrets: inherit
