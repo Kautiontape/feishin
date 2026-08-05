@@ -3,6 +3,9 @@ on:
   schedule:
     - cron: '0 13 * * 1' # weekly Monday check
   workflow_dispatch:
+concurrency:
+  group: fork-sync-${{ github.repository }}
+  cancel-in-progress: false
 permissions:
   contents: write
 jobs:
